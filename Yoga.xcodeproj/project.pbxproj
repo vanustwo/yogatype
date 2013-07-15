@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		214E814C178FF34400C7054E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814B178FF34400C7054E /* Foundation.framework */; };
+		214E814E178FF34400C7054E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814D178FF34400C7054E /* CoreGraphics.framework */; };
+		214E8150178FF34400C7054E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814F178FF34400C7054E /* UIKit.framework */; };
+		214E8152178FF34400C7054E /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E8151178FF34400C7054E /* SpriteKit.framework */; };
+		214E8158178FF34400C7054E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 214E8156178FF34400C7054E /* InfoPlist.strings */; };
+		214E815A178FF34400C7054E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E8159178FF34400C7054E /* main.m */; };
+		214E815E178FF34400C7054E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E815D178FF34400C7054E /* AppDelegate.m */; };
+		214E8161178FF34400C7054E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214E815F178FF34400C7054E /* Main_iPhone.storyboard */; };
+		214E8164178FF34400C7054E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 214E8162178FF34400C7054E /* Main_iPad.storyboard */; };
+		214E8167178FF34400C7054E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E8166178FF34400C7054E /* ViewController.m */; };
+		214E816A178FF34400C7054E /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E8169178FF34400C7054E /* MyScene.m */; };
+		214E816E178FF34400C7054E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214E816D178FF34400C7054E /* Images.xcassets */; };
+		214E8175178FF34400C7054E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E8174178FF34400C7054E /* XCTest.framework */; };
+		214E8176178FF34400C7054E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814B178FF34400C7054E /* Foundation.framework */; };
+		214E8177178FF34400C7054E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814F178FF34400C7054E /* UIKit.framework */; };
+		214E817F178FF34400C7054E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 214E817D178FF34400C7054E /* InfoPlist.strings */; };
+		214E8181178FF34400C7054E /* YogaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E8180178FF34400C7054E /* YogaTests.m */; };
+		218B43E8178FFB9D0035C8C1 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B43E7178FFB9D0035C8C1 /* GameView.m */; };
+		218B43E9178FFB9D0035C8C1 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B43E7178FFB9D0035C8C1 /* GameView.m */; };
+		218B46481790011D0035C8C1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B46471790011D0035C8C1 /* BaseView.m */; };
+		218B46491790011D0035C8C1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B46471790011D0035C8C1 /* BaseView.m */; };
+		218B464D179007E70035C8C1 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 218B464C179007E70035C8C1 /* sprites.atlas */; };
+		218B464E179007E70035C8C1 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 218B464C179007E70035C8C1 /* sprites.atlas */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		214E8178178FF34400C7054E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 214E8140178FF34400C7054E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 214E8147178FF34400C7054E;
+			remoteInfo = Yoga;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		214E8148178FF34400C7054E /* Yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		214E814B178FF34400C7054E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		214E814D178FF34400C7054E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		214E814F178FF34400C7054E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		214E8151178FF34400C7054E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		214E8155178FF34400C7054E /* Yoga-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Yoga-Info.plist"; sourceTree = "<group>"; };
+		214E8157178FF34400C7054E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		214E8159178FF34400C7054E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		214E815B178FF34400C7054E /* Yoga-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yoga-Prefix.pch"; sourceTree = "<group>"; };
+		214E815C178FF34400C7054E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		214E815D178FF34400C7054E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		214E8160178FF34400C7054E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		214E8163178FF34400C7054E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		214E8165178FF34400C7054E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		214E8166178FF34400C7054E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		214E8168178FF34400C7054E /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		214E8169178FF34400C7054E /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		214E816D178FF34400C7054E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		214E8173178FF34400C7054E /* YogaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YogaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		214E8174178FF34400C7054E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		214E817C178FF34400C7054E /* YogaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YogaTests-Info.plist"; sourceTree = "<group>"; };
+		214E817E178FF34400C7054E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		214E8180178FF34400C7054E /* YogaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YogaTests.m; sourceTree = "<group>"; };
+		218B43E6178FFB9D0035C8C1 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		218B43E7178FFB9D0035C8C1 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		218B4641178FFDFD0035C8C1 /* GameMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMacros.h; sourceTree = "<group>"; };
+		218B46461790011D0035C8C1 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		218B46471790011D0035C8C1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		218B464C179007E70035C8C1 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		214E8145178FF34400C7054E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214E814E178FF34400C7054E /* CoreGraphics.framework in Frameworks */,
+				214E8150178FF34400C7054E /* UIKit.framework in Frameworks */,
+				214E8152178FF34400C7054E /* SpriteKit.framework in Frameworks */,
+				214E814C178FF34400C7054E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214E8170178FF34400C7054E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214E8175178FF34400C7054E /* XCTest.framework in Frameworks */,
+				214E8177178FF34400C7054E /* UIKit.framework in Frameworks */,
+				214E8176178FF34400C7054E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		214E813F178FF34400C7054E = {
+			isa = PBXGroup;
+			children = (
+				218B464A179007E70035C8C1 /* Assets */,
+				214E8153178FF34400C7054E /* Yoga */,
+				214E817A178FF34400C7054E /* YogaTests */,
+				214E814A178FF34400C7054E /* Frameworks */,
+				214E8149178FF34400C7054E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		214E8149178FF34400C7054E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				214E8148178FF34400C7054E /* Yoga.app */,
+				214E8173178FF34400C7054E /* YogaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		214E814A178FF34400C7054E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				214E814B178FF34400C7054E /* Foundation.framework */,
+				214E814D178FF34400C7054E /* CoreGraphics.framework */,
+				214E814F178FF34400C7054E /* UIKit.framework */,
+				214E8151178FF34400C7054E /* SpriteKit.framework */,
+				214E8174178FF34400C7054E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		214E8153178FF34400C7054E /* Yoga */ = {
+			isa = PBXGroup;
+			children = (
+				218B43E5178FFB9D0035C8C1 /* Classes */,
+				214E815C178FF34400C7054E /* AppDelegate.h */,
+				214E815D178FF34400C7054E /* AppDelegate.m */,
+				214E815F178FF34400C7054E /* Main_iPhone.storyboard */,
+				214E8162178FF34400C7054E /* Main_iPad.storyboard */,
+				214E8165178FF34400C7054E /* ViewController.h */,
+				214E8166178FF34400C7054E /* ViewController.m */,
+				214E8168178FF34400C7054E /* MyScene.h */,
+				214E8169178FF34400C7054E /* MyScene.m */,
+				214E816D178FF34400C7054E /* Images.xcassets */,
+				214E8154178FF34400C7054E /* Supporting Files */,
+			);
+			path = Yoga;
+			sourceTree = "<group>";
+		};
+		214E8154178FF34400C7054E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				214E8155178FF34400C7054E /* Yoga-Info.plist */,
+				214E8156178FF34400C7054E /* InfoPlist.strings */,
+				214E8159178FF34400C7054E /* main.m */,
+				214E815B178FF34400C7054E /* Yoga-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		214E817A178FF34400C7054E /* YogaTests */ = {
+			isa = PBXGroup;
+			children = (
+				214E8180178FF34400C7054E /* YogaTests.m */,
+				214E817B178FF34400C7054E /* Supporting Files */,
+			);
+			path = YogaTests;
+			sourceTree = "<group>";
+		};
+		214E817B178FF34400C7054E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				214E817C178FF34400C7054E /* YogaTests-Info.plist */,
+				214E817D178FF34400C7054E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		218B43E5178FFB9D0035C8C1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				218B46461790011D0035C8C1 /* BaseView.h */,
+				218B46471790011D0035C8C1 /* BaseView.m */,
+				218B43E6178FFB9D0035C8C1 /* GameView.h */,
+				218B43E7178FFB9D0035C8C1 /* GameView.m */,
+				218B4641178FFDFD0035C8C1 /* GameMacros.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		218B464A179007E70035C8C1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				218B464B179007E70035C8C1 /* Textures */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		218B464B179007E70035C8C1 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				218B464C179007E70035C8C1 /* sprites.atlas */,
+			);
+			path = Textures;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		214E8147178FF34400C7054E /* Yoga */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 214E8184178FF34400C7054E /* Build configuration list for PBXNativeTarget "Yoga" */;
+			buildPhases = (
+				214E8144178FF34400C7054E /* Sources */,
+				214E8145178FF34400C7054E /* Frameworks */,
+				214E8146178FF34400C7054E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Yoga;
+			productName = Yoga;
+			productReference = 214E8148178FF34400C7054E /* Yoga.app */;
+			productType = "com.apple.product-type.application";
+		};
+		214E8172178FF34400C7054E /* YogaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 214E8187178FF34400C7054E /* Build configuration list for PBXNativeTarget "YogaTests" */;
+			buildPhases = (
+				214E816F178FF34400C7054E /* Sources */,
+				214E8170178FF34400C7054E /* Frameworks */,
+				214E8171178FF34400C7054E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				214E8179178FF34400C7054E /* PBXTargetDependency */,
+			);
+			name = YogaTests;
+			productName = YogaTests;
+			productReference = 214E8173178FF34400C7054E /* YogaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		214E8140178FF34400C7054E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = ustwo;
+				TargetAttributes = {
+					214E8147178FF34400C7054E = {
+						DevelopmentTeam = 8Z3V4F58RK;
+					};
+					214E8172178FF34400C7054E = {
+						TestTargetID = 214E8147178FF34400C7054E;
+					};
+				};
+			};
+			buildConfigurationList = 214E8143178FF34400C7054E /* Build configuration list for PBXProject "Yoga" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 214E813F178FF34400C7054E;
+			productRefGroup = 214E8149178FF34400C7054E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				214E8147178FF34400C7054E /* Yoga */,
+				214E8172178FF34400C7054E /* YogaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		214E8146178FF34400C7054E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				218B464D179007E70035C8C1 /* sprites.atlas in Resources */,
+				214E816E178FF34400C7054E /* Images.xcassets in Resources */,
+				214E8164178FF34400C7054E /* Main_iPad.storyboard in Resources */,
+				214E8161178FF34400C7054E /* Main_iPhone.storyboard in Resources */,
+				214E8158178FF34400C7054E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214E8171178FF34400C7054E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				218B464E179007E70035C8C1 /* sprites.atlas in Resources */,
+				214E817F178FF34400C7054E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		214E8144178FF34400C7054E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214E816A178FF34400C7054E /* MyScene.m in Sources */,
+				218B43E8178FFB9D0035C8C1 /* GameView.m in Sources */,
+				218B46481790011D0035C8C1 /* BaseView.m in Sources */,
+				214E8167178FF34400C7054E /* ViewController.m in Sources */,
+				214E815E178FF34400C7054E /* AppDelegate.m in Sources */,
+				214E815A178FF34400C7054E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		214E816F178FF34400C7054E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				218B43E9178FFB9D0035C8C1 /* GameView.m in Sources */,
+				214E8181178FF34400C7054E /* YogaTests.m in Sources */,
+				218B46491790011D0035C8C1 /* BaseView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		214E8179178FF34400C7054E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 214E8147178FF34400C7054E /* Yoga */;
+			targetProxy = 214E8178178FF34400C7054E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		214E8156178FF34400C7054E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				214E8157178FF34400C7054E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		214E815F178FF34400C7054E /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				214E8160178FF34400C7054E /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		214E8162178FF34400C7054E /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				214E8163178FF34400C7054E /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		214E817D178FF34400C7054E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				214E817E178FF34400C7054E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		214E8182178FF34400C7054E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		214E8183178FF34400C7054E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		214E8185178FF34400C7054E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Yoga/Yoga-Prefix.pch";
+				INFOPLIST_FILE = "Yoga/Yoga-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		214E8186178FF34400C7054E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Yoga/Yoga-Prefix.pch";
+				INFOPLIST_FILE = "Yoga/Yoga-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		214E8188178FF34400C7054E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Yoga.app/Yoga";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Yoga/Yoga-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "YogaTests/YogaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		214E8189178FF34400C7054E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Yoga.app/Yoga";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Yoga/Yoga-Prefix.pch";
+				INFOPLIST_FILE = "YogaTests/YogaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		214E8143178FF34400C7054E /* Build configuration list for PBXProject "Yoga" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214E8182178FF34400C7054E /* Debug */,
+				214E8183178FF34400C7054E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		214E8184178FF34400C7054E /* Build configuration list for PBXNativeTarget "Yoga" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214E8185178FF34400C7054E /* Debug */,
+				214E8186178FF34400C7054E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		214E8187178FF34400C7054E /* Build configuration list for PBXNativeTarget "YogaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				214E8188178FF34400C7054E /* Debug */,
+				214E8189178FF34400C7054E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 214E8140178FF34400C7054E /* Project object */;
+}
