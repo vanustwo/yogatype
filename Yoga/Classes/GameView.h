@@ -14,7 +14,7 @@ typedef enum : uint8_t {
     YogaColliderTypeWall             = 1,
     YogaColliderTypeBody             = 2,
     YogaColliderTypeArm              = 4,
-    APAColliderTypeWall              = 8,
+    YogaColliderTypeLeg              = 8,
     APAColliderTypeCave              = 16
 } YogaColliderType;
 
