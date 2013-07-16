@@ -30,6 +30,16 @@
 		218B46491790011D0035C8C1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B46471790011D0035C8C1 /* BaseView.m */; };
 		218B464D179007E70035C8C1 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 218B464C179007E70035C8C1 /* sprites.atlas */; };
 		218B464E179007E70035C8C1 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 218B464C179007E70035C8C1 /* sprites.atlas */; };
+		21E01B2C17954FA0001F9200 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2B17954FA0001F9200 /* CGPointExtension.m */; };
+		21E01B2D17954FA0001F9200 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2B17954FA0001F9200 /* CGPointExtension.m */; };
+		21E01B30179551BB001F9200 /* BodyShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2F179551BB001F9200 /* BodyShapeNode.m */; };
+		21E01B31179551BB001F9200 /* BodyShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2F179551BB001F9200 /* BodyShapeNode.m */; };
+		21E01B3417955594001F9200 /* MouseJoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3317955594001F9200 /* MouseJoint.m */; };
+		21E01B3517955594001F9200 /* MouseJoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3317955594001F9200 /* MouseJoint.m */; };
+		21E01B3817957685001F9200 /* Ragdoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3717957685001F9200 /* Ragdoll.m */; };
+		21E01B3917957685001F9200 /* Ragdoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3717957685001F9200 /* Ragdoll.m */; };
+		21E01B3C17957832001F9200 /* PhysicShapeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */; };
+		21E01B3D17957832001F9200 /* PhysicShapeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +82,16 @@
 		218B46461790011D0035C8C1 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		218B46471790011D0035C8C1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		218B464C179007E70035C8C1 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		21E01B2A17954FA0001F9200 /* CGPointExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointExtension.h; sourceTree = "<group>"; };
+		21E01B2B17954FA0001F9200 /* CGPointExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPointExtension.m; sourceTree = "<group>"; };
+		21E01B2E179551BB001F9200 /* BodyShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyShapeNode.h; sourceTree = "<group>"; };
+		21E01B2F179551BB001F9200 /* BodyShapeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyShapeNode.m; sourceTree = "<group>"; };
+		21E01B3217955594001F9200 /* MouseJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseJoint.h; sourceTree = "<group>"; };
+		21E01B3317955594001F9200 /* MouseJoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouseJoint.m; sourceTree = "<group>"; };
+		21E01B3617957685001F9200 /* Ragdoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ragdoll.h; sourceTree = "<group>"; };
+		21E01B3717957685001F9200 /* Ragdoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ragdoll.m; sourceTree = "<group>"; };
+		21E01B3A17957832001F9200 /* PhysicShapeBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicShapeBuilder.h; sourceTree = "<group>"; };
+		21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhysicShapeBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,11 +201,21 @@
 		218B43E5178FFB9D0035C8C1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				21E01B2A17954FA0001F9200 /* CGPointExtension.h */,
+				21E01B2B17954FA0001F9200 /* CGPointExtension.m */,
 				218B46461790011D0035C8C1 /* BaseView.h */,
 				218B46471790011D0035C8C1 /* BaseView.m */,
 				218B43E6178FFB9D0035C8C1 /* GameView.h */,
 				218B43E7178FFB9D0035C8C1 /* GameView.m */,
 				218B4641178FFDFD0035C8C1 /* GameMacros.h */,
+				21E01B2E179551BB001F9200 /* BodyShapeNode.h */,
+				21E01B2F179551BB001F9200 /* BodyShapeNode.m */,
+				21E01B3217955594001F9200 /* MouseJoint.h */,
+				21E01B3317955594001F9200 /* MouseJoint.m */,
+				21E01B3617957685001F9200 /* Ragdoll.h */,
+				21E01B3717957685001F9200 /* Ragdoll.m */,
+				21E01B3A17957832001F9200 /* PhysicShapeBuilder.h */,
+				21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -312,9 +342,14 @@
 				214E816A178FF34400C7054E /* MyScene.m in Sources */,
 				218B43E8178FFB9D0035C8C1 /* GameView.m in Sources */,
 				218B46481790011D0035C8C1 /* BaseView.m in Sources */,
+				21E01B3417955594001F9200 /* MouseJoint.m in Sources */,
 				214E8167178FF34400C7054E /* ViewController.m in Sources */,
+				21E01B3C17957832001F9200 /* PhysicShapeBuilder.m in Sources */,
+				21E01B30179551BB001F9200 /* BodyShapeNode.m in Sources */,
 				214E815E178FF34400C7054E /* AppDelegate.m in Sources */,
+				21E01B3817957685001F9200 /* Ragdoll.m in Sources */,
 				214E815A178FF34400C7054E /* main.m in Sources */,
+				21E01B2C17954FA0001F9200 /* CGPointExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,9 +357,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E01B3917957685001F9200 /* Ragdoll.m in Sources */,
+				21E01B3517955594001F9200 /* MouseJoint.m in Sources */,
 				218B43E9178FFB9D0035C8C1 /* GameView.m in Sources */,
 				214E8181178FF34400C7054E /* YogaTests.m in Sources */,
+				21E01B2D17954FA0001F9200 /* CGPointExtension.m in Sources */,
+				21E01B31179551BB001F9200 /* BodyShapeNode.m in Sources */,
 				218B46491790011D0035C8C1 /* BaseView.m in Sources */,
+				21E01B3D17957832001F9200 /* PhysicShapeBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Van Le (U938G45AC7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yoga/Yoga-Prefix.pch";
 				INFOPLIST_FILE = "Yoga/Yoga-Info.plist";
@@ -464,7 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Van Le (U938G45AC7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yoga/Yoga-Prefix.pch";
 				INFOPLIST_FILE = "Yoga/Yoga-Info.plist";

@@ -34,6 +34,9 @@
 
 #define ALL_COLLISION_BITS      0xffff
 
+#define LIMBS_GRAB_RADIUS       6
+
+
 static inline float lerpf(float a, float b, float t)
 {
     return a * (1.f - t) + b * t;

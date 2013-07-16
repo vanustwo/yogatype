@@ -7,6 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "CGPointExtension.h"
+#import "BodyShapeNode.h"
+#import "MouseJoint.h"
 
 @interface BaseView : SKScene <SKPhysicsContactDelegate>
 {
@@ -15,7 +18,6 @@
 
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval; // the previous update: loop time interval
 @property (nonatomic) CFTimeInterval timeSinceLast; // the previous update: loop time interval
-
 
 
 - (int)NToVP_X:(float)dist;

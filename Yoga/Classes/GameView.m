@@ -7,8 +7,9 @@
 //
 
 #import "GameView.h"
+#import "Ragdoll.h"
 
-#define LIMBS_GRAB_RADIUS       6
+#define MAX_TOUCHES             2
 
 @implementation GameView
 
@@ -28,9 +29,10 @@
         [self addChild:myLabel];
         
         [self initPhysicsWorld];
-       // [self buildRagdoll];
+        [self initMouseJoints];
         
-        [self createRagdollAtPosition:[self screenCenterPoint]];
+        self.ragdoll = [[Ragdoll alloc] init];
+        [self.ragdoll createRagdollAtPosition:[self screenCenterPoint] inScene:self];
         
         self.mouseJoint = nil;
     }
@@ -48,335 +50,18 @@
     self.physicsBody.dynamic = NO;
 }
 
-
-#pragma mark - Ragdoll builder
-
-- (void)createRagdollAtPosition:(CGPoint)position
+- (void)initMouseJoints
 {
     
-    //head
-    
-    CGFloat headRadius = 12.0f;
-    
-    SKShapeNode* head = [self addBallShapeNodeWithRadius:headRadius withPhysicBody:YES];
-    head.physicsBody.categoryBitMask = YogaColliderTypeBody;
-    head.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    head.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    head.physicsBody.dynamic = NO;
-    head.name = @"head";
-    head.position = position;
-    [self addChild:head];
-    
-    
-    CGSize torsoSize = CGSizeMake(35, 15);
-    
-    
-    //torso 1
-    SKShapeNode* torso1 = [self addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
-    torso1.position = CGPointMake(head.position.x, head.position.y-(headRadius/2 + torsoSize.height));
-    torso1.physicsBody.dynamic = YES;
-    torso1.name = @"torso1";
-    [self addChild:torso1];
-    
-    
-    //torso 2
-    SKShapeNode* torso2 = [self addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
-    torso2.physicsBody.categoryBitMask = YogaColliderTypeBody;
-    torso2.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    torso2.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    torso2.position = CGPointMake(torso1.position.x, torso1.position.y-torsoSize.height);
-    torso2.physicsBody.dynamic = YES;
-    torso2.name = @"torso2";
-    [self addChild:torso2];
+    self.mouseJointArray = [NSMutableArray arrayWithCapacity:MAX_TOUCHES];
 
-    
-    //torso 3
-    SKShapeNode* torso3 = [self addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
-    torso3.physicsBody.categoryBitMask = YogaColliderTypeBody;
-    torso3.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    torso3.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    torso3.position = CGPointMake(torso2.position.x, torso2.position.y-torsoSize.height);
-    torso3.physicsBody.dynamic = YES;
-    torso3.name = @"torso3";
-    [self addChild:torso3];
-    
-    
-    //left arm
-    
-    CGSize armSize = CGSizeMake(10, 20);
-    
-    //upper arm
-    SKShapeNode* upperLeftArm = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    upperLeftArm.name = @"leftShoulder";
-    upperLeftArm.physicsBody.categoryBitMask = YogaColliderTypeArm;
-    upperLeftArm.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    upperLeftArm.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    //upperLeftArm.physicsBody.dynamic = NO;
-    upperLeftArm.position = CGPointMake(torso1.position.x - ((torsoSize.width/2)), (torso1.position.y + torsoSize.height/2) - armSize.height/2  );
-    [self addChild:upperLeftArm];
-    
-    
-    //lower arm
-    SKShapeNode* lowerLeftArm = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    lowerLeftArm.name = @"lowerLeftArm";
-    lowerLeftArm.physicsBody.categoryBitMask = YogaColliderTypeArm;
-    lowerLeftArm.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    lowerLeftArm.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    lowerLeftArm.physicsBody.dynamic = YES;
-    lowerLeftArm.position = CGPointMake(upperLeftArm.position.x, upperLeftArm.position.y - armSize.height  );
-    [self addChild:lowerLeftArm];
-    
-    
-    leftHand = [self addBallShapeNodeWithRadius:LIMBS_GRAB_RADIUS withPhysicBody:YES];
-    leftHand.name = @"leftHand";
-    leftHand.position = CGPointMake(lowerLeftArm.position.x, lowerLeftArm.position.y - armSize.height/2  );
-    leftHand.physicsBody.categoryBitMask = YogaColliderTypeArm;
-    leftHand.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    leftHand.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    leftHand.physicsBody.density = 1.0f;
-    [self addChild:leftHand];
-    
-
-    
-    //right arm
-    SKShapeNode* upperRightArm = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    upperRightArm.name = @"rightShoulder";
-    upperRightArm.physicsBody.categoryBitMask = YogaColliderTypeArm;
-    upperRightArm.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    upperRightArm.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    upperRightArm.position = CGPointMake(torso1.position.x + ((torsoSize.width/2)), (torso1.position.y + torsoSize.height/2) - armSize.height/2  );
-    [self addChild:upperRightArm];
-    
-    //lower right arm
-    SKShapeNode* lowerRightArm = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    lowerRightArm.name = @"lowerRightArm";
-    lowerRightArm.physicsBody.categoryBitMask = YogaColliderTypeArm;
-    lowerRightArm.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    lowerRightArm.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    lowerRightArm.physicsBody.dynamic = YES;
-    lowerRightArm.position = CGPointMake(upperRightArm.position.x, upperRightArm.position.y - armSize.height  );
-    [self addChild:lowerRightArm];
-    
-    rightHand = [self addBallShapeNodeWithRadius:LIMBS_GRAB_RADIUS withPhysicBody:YES];
-    rightHand.name = @"rightHand";
-    rightHand.position = CGPointMake(lowerRightArm.position.x, lowerRightArm.position.y - armSize.height/2  );
-    rightHand.physicsBody.categoryBitMask = YogaColliderTypeArm;
-    rightHand.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    rightHand.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    rightHand.physicsBody.density = 1.0f;
-    [self addChild:rightHand];
-    
-    
-    //legs
-    //left leg
-    CGSize legSize = CGSizeMake(10, 20);
-    
-    SKShapeNode* upperLeftLeg = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    upperLeftLeg.name = @"upperLeftLeg";
-    upperLeftLeg.physicsBody.categoryBitMask = YogaColliderTypeLeg;
-    upperLeftLeg.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    upperLeftLeg.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    //upperLeftLeg.physicsBody.dynamic = NO;
-    upperLeftLeg.position = CGPointMake(torso3.position.x - ((torsoSize.width*0.3f)), (torso3.position.y - torsoSize.height/2) - legSize.height/2  );
-    [self addChild:upperLeftLeg];
-
-    
-    SKShapeNode* lowerLeftLeg = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    lowerLeftLeg.name = @"lowerLeftLeg";
-    lowerLeftLeg.physicsBody.categoryBitMask = YogaColliderTypeLeg;
-    lowerLeftLeg.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    lowerLeftLeg.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    //lowerLeftLeg.physicsBody.dynamic = NO;
-    lowerLeftLeg.position = CGPointMake(upperLeftLeg.position.x, upperLeftLeg.position.y - legSize.height  );
-    [self addChild:lowerLeftLeg];
-    
-    //right leg
-    
-    SKShapeNode* upperRightLeg = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    upperRightLeg.name = @"upperRightLeg";
-    upperRightLeg.physicsBody.categoryBitMask = YogaColliderTypeLeg;
-    upperRightLeg.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    upperRightLeg.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    //upperRightLeg.physicsBody.dynamic = NO;
-    upperRightLeg.position = CGPointMake(torso3.position.x + ((torsoSize.width*0.3f)), (torso3.position.y - torsoSize.height/2) - legSize.height/2  );
-    [self addChild:upperRightLeg];
-
-    SKShapeNode* lowerRightLeg = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
-    lowerRightLeg.name = @"lowerRightLeg";
-    lowerRightLeg.physicsBody.categoryBitMask = YogaColliderTypeLeg;
-    lowerRightLeg.physicsBody.collisionBitMask = YogaColliderTypeWall;
-    lowerRightLeg.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    //lowerRightLeg.physicsBody.dynamic = NO;
-    lowerRightLeg.position = CGPointMake(upperRightLeg.position.x, upperRightLeg.position.y - legSize.height  );
-    [self addChild:lowerRightLeg];
-    
-    
-    //joints
-    
-    //pin head to background
-    SKPhysicsJointPin* pinJoint = [SKPhysicsJointPin jointWithBodyA:self.physicsBody bodyB:head.physicsBody anchor:head.position];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.frictionTorque = 0.2f;
-    pinJoint.lowerAngleLimit = -40.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 40.0f / (180.0f / M_PI);
-   // [self.physicsWorld addJoint:pinJoint];
-    
-    //head to torso 1
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:head.physicsBody bodyB:torso1.physicsBody anchor:CGPointMake(torso1.position.x, torso1.position.y+(torsoSize.height/2))];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -40.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    pinJoint.upperAngleLimit = 40.0f / (180.0f / M_PI);
-    [self.physicsWorld addJoint:pinJoint];
-    
-    //torso 1 -> torso 2
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:torso1.physicsBody bodyB:torso2.physicsBody anchor:CGPointMake(torso1.position.x, torso1.position.y-(torsoSize.height/2))];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -15.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 15.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-
-    
-    //torso 2 -> torso 3
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:torso2.physicsBody bodyB:torso3.physicsBody anchor:CGPointMake(torso2.position.x, torso2.position.y-(torsoSize.height/2))];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -15.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 15.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-
-    //torso 1 to left arm
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:torso1.physicsBody bodyB:upperLeftArm.physicsBody anchor:CGPointMake(torso1.position.x - ((torsoSize.width/2)), torso1.position.y + torsoSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
-  
-    [self.physicsWorld addJoint:pinJoint];
-    
-    //upper arm to lower arm
-    
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:upperLeftArm.physicsBody bodyB:lowerLeftArm.physicsBody anchor:CGPointMake(lowerLeftArm.position.x, lowerLeftArm.position.y+armSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-    
-    //torso 1 to right arm
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:torso1.physicsBody bodyB:upperRightArm.physicsBody anchor:CGPointMake(torso1.position.x + ((torsoSize.width/2)), torso1.position.y + torsoSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
-    [self.physicsWorld addJoint:pinJoint];
-    
-    //upper right to lower arm
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:upperRightArm.physicsBody bodyB:lowerRightArm.physicsBody anchor:CGPointMake(lowerRightArm.position.x, lowerRightArm.position.y+armSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-
-    //left leg
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:torso3.physicsBody bodyB:upperLeftLeg.physicsBody anchor:CGPointMake(upperLeftLeg.position.x, upperLeftLeg.position.y+legSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 45.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-   
-    //lower left leg
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:upperLeftLeg.physicsBody bodyB:lowerLeftLeg.physicsBody anchor:CGPointMake(lowerLeftLeg.position.x, lowerLeftLeg.position.y+legSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 115.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-    //right leg
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:torso3.physicsBody bodyB:upperRightLeg.physicsBody anchor:CGPointMake(upperRightLeg.position.x, upperRightLeg.position.y+legSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 45.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-    
-    //lower right leg
-    pinJoint = [SKPhysicsJointPin jointWithBodyA:upperRightLeg.physicsBody bodyB:lowerRightLeg.physicsBody anchor:CGPointMake(upperRightLeg.position.x, upperRightLeg.position.y+legSize.height/2 )];
-    pinJoint.shouldEnableLimits = YES;
-    pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
-    pinJoint.upperAngleLimit = 115.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
-    [self.physicsWorld addJoint:pinJoint];
-    
-    //hands
-    
-    SKPhysicsJointFixed* fixedJoint = [SKPhysicsJointFixed jointWithBodyA:lowerLeftArm.physicsBody bodyB:leftHand.physicsBody anchor:leftHand.position];
-    [self.physicsWorld addJoint:fixedJoint];
-    
-    fixedJoint = [SKPhysicsJointFixed jointWithBodyA:lowerRightArm.physicsBody bodyB:rightHand.physicsBody anchor:rightHand.position];
-    [self.physicsWorld addJoint:fixedJoint];
-    
-    
-    //[upperLeftLeg.physicsBody applyAngularImpulse:0.11f];
-
-
-}
-
-- (SKShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics
-{
-    SKShapeNode *shape = [[SKShapeNode alloc] init];
-    CGMutablePathRef path = CGPathCreateMutable();
-
-    CGPathAddArc(path, NULL, 0,0, radius, 0, M_PI*2, YES);
-    shape.path = path;
-    shape.fillColor = [SKColor blueColor];
-    shape.strokeColor = [SKColor redColor];
-    shape.antialiased = YES;
-    shape.lineWidth = 1.0f;
-    
-    CGPathRelease(path);
-    
-    if( usePhysics )
+    //create 2 empty mouse joint
+    for( int i=0;i<MAX_TOUCHES;i++ )
     {
-        shape.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:radius];
+        MouseJoint* mj = [[MouseJoint alloc] init];
+       [self.mouseJointArray addObject:mj];
     }
     
-    return shape;
-}
-
-- (SKShapeNode*)addBoxShapeNodeWithSize:(CGSize)size withPhysicBody:(BOOL)usePhysics
-{
-    SKShapeNode *shape = [[SKShapeNode alloc] init];
-    
-    CGMutablePathRef path = CGPathCreateMutable();
-    
-    CGPathAddRect(path, NULL, CGRectMake(-size.width/2, -size.height/2, size.width, size.height));
-    shape.path = path;
-    shape.fillColor = [SKColor blueColor];
-    shape.strokeColor = [SKColor redColor];
-    shape.lineWidth = 0.4f;
-    shape.antialiased = YES;
-
-    CGPathRelease(path);
-    
-    
-    //SKSpriteNode* shape = [SKSpriteNode spriteNodeWithColor:[SKColor blueColor] size:size];
-    
-    if( usePhysics )
-    {
-        shape.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:size];
-        shape.physicsBody.density = 3.0f;
-    }
-    
-    return shape;
 }
 
 #pragma mark - Touch Handler
@@ -386,38 +71,117 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKPhysicsBody *body = [self.physicsWorld bodyAtPoint:location];
+        //NSLog(@"location %f %f", location.x, location.y);
         
-        if( body && !self.mouseJoint )
+        /*
+        BodyShapeNode *node = (BodyShapeNode*)[self childNodeWithName:@"head"];
+
+        BOOL touchedLimb = false;
+        
+        CGFloat distance = ccpDistance(location, node.position);
+        if( distance<node.radius )
         {
-            
-            SKNode *node = [ self childNodeWithName:@"head"];//body.node;
-            
-            NSLog(@"touch body %@", node.name);
-            
-            [self destroyMouseNode];
-            [self createMouseNodeAtPoint:location withNode:node];
-            
+            NSLog(@"touch inside %@", node.name);
+            touchedLimb = true;
         }
         
         
+        if( touchedLimb )
+        {
+            //find spare mouseJoint
+            
+            for( MouseJoint* joint in self.mouseJointArray )
+            {
+                
+                if( !joint.touch && !joint.mouseJoint )
+                {
+                    //found free mouseJoint
+                    [joint createMouseNodeAtPoint:location withNode:node inScene:self withTouch:touch];
+                    break;
+                }
+            }
+            
+        }*/
+        
+        
+        for( MouseJoint* joint in self.mouseJointArray )
+        {
+            
+            if( !joint.touch && !joint.mouseJoint )
+            {
+                BodyShapeNode *node = (BodyShapeNode*)[self childNodeWithName:@"head"];
+                
+                
+                
+                
+                
+                BOOL touchedLimb = false;
+                
+                CGFloat distance = ccpDistance(location, node.position);
+                if( distance<node.radius )
+                {
+                    NSLog(@"touch inside %@", node.name);
+                    touchedLimb = true;
+                }
+            
+                if( touchedLimb )
+                {
+                    [joint createMouseNodeAtPoint:location withNode:node inScene:self withTouch:touch];
+                    break;
+                }
+                
+            
+            }
+        }
+        
+       
     }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInNode:self];
-    
-    if( self.mouseJoint )
+    for (UITouch *touch in touches)
     {
-       self.mouseNode.position = point;
+        CGPoint location = [touch locationInNode:self];
+    
+        
+        for( MouseJoint* joint in self.mouseJointArray )
+        {
+            
+            if( joint.touch && joint.touch==touch  )
+            {
+                if( joint.mouseJoint )
+                {
+                    joint.mouseNode.position = location;
+                }
+                break;
+                
+            }
+        }
+        
+        
     }
+    
+    
+    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self destroyMouseNode];
+    for (UITouch *touch in touches)
+    {
+        //CGPoint location = [touch locationInNode:self];
+
+        for( MouseJoint* joint in self.mouseJointArray )
+        {
+            if( joint.touch && joint.touch==touch  )
+            {
+                [joint destroyMouseJoint];
+            }
+        }
+        
+        
+    }
 }
 
 #pragma mark - Mouse Joint
@@ -441,7 +205,6 @@
 
 - (void)destroyMouseNode
 {
-    
     if (self.mouseNode) {
         [self.mouseNode removeFromParent];
         self.mouseNode = nil;

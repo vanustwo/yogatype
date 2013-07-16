@@ -9,29 +9,25 @@
 #import <SpriteKit/SpriteKit.h>
 #import "BaseView.h"
 
+@class Ragdoll;
+
 /* Bitmask for the different entities with physics bodies. */
 typedef enum : uint8_t {
     YogaColliderTypeWall             = 1,
     YogaColliderTypeBody             = 2,
     YogaColliderTypeArm              = 4,
     YogaColliderTypeLeg              = 8,
-    APAColliderTypeCave              = 16
 } YogaColliderType;
-
 
 @interface GameView : BaseView
 {
-    SKShapeNode*        leftHand;
-    SKShapeNode*        rightHand;
     
 }
 
-@property (nonatomic, strong) SKPhysicsJointLimit *mouseJoint;
-@property (nonatomic, strong) SKNode *mouseNode;
-
-- (SKShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics;
-- (SKShapeNode*)addBoxShapeNodeWithSize:(CGSize)size withPhysicBody:(BOOL)usePhysics;
-
+@property (nonatomic, strong) SKPhysicsJointLimit   *mouseJoint;
+@property (nonatomic, strong) SKNode                *mouseNode;
+@property (nonatomic, strong) NSMutableArray*       mouseJointArray;
+@property (nonatomic, strong) Ragdoll*              ragdoll;
 
 @end
 
