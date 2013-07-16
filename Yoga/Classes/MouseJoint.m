@@ -32,6 +32,7 @@
     self.mouseJoint.maxLength = 15;
     [scene.physicsWorld addJoint:self.mouseJoint];
     
+    self.dragNode = node;
     self.scene = scene;
     self.touch = touch;
 }

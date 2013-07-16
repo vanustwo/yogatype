@@ -19,13 +19,20 @@ typedef enum : uint8_t {
     YogaColliderTypeLeg              = 8,
 } YogaColliderType;
 
+typedef enum{
+    GameState_Idle,
+    GameState_Start,
+    
+    GameState_End,
+}GameState;
+
+
 @interface GameView : BaseView
 {
-    
+    CGPoint                         testPoint;
+    GameState                       gameState;
 }
 
-@property (nonatomic, strong) SKPhysicsJointLimit   *mouseJoint;
-@property (nonatomic, strong) SKNode                *mouseNode;
 @property (nonatomic, strong) NSMutableArray*       mouseJointArray;
 @property (nonatomic, strong) Ragdoll*              ragdoll;
 

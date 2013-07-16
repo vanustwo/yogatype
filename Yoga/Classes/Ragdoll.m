@@ -66,7 +66,7 @@
     
     
     //torso 3
-    SKShapeNode* torso3 = [PhysicShapeBuilder addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
+    BodyShapeNode* torso3 = [PhysicShapeBuilder addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
     torso3.physicsBody.categoryBitMask = YogaColliderTypeBody;
     torso3.physicsBody.collisionBitMask = YogaColliderTypeWall;
     torso3.physicsBody.contactTestBitMask = YogaColliderTypeWall;
@@ -75,6 +75,7 @@
     torso3.name = @"torso3";
     [scene addChild:torso3];
     
+    centreNode = torso3;
     
     //left arm
     
@@ -240,6 +241,7 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
+    pinJoint.frictionTorque = 0.002f;
     [scene.physicsWorld addJoint:pinJoint];
     
     
@@ -255,6 +257,7 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
+    pinJoint.frictionTorque = 0.002f;
     [scene.physicsWorld addJoint:pinJoint];
     
     
@@ -321,7 +324,10 @@
     return nil;
 }
 
-
+- (CGPoint)distanceBetweenCentreFromNode:(SKNode*)node
+{
+    return ccpSub(node.position, centreNode.position);
+}
 
 
 

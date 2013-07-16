@@ -14,12 +14,14 @@
 {
     BodyShapeNode*        leftHand;
     BodyShapeNode*        rightHand;
+    BodyShapeNode*        centreNode;
 }
 
-@property (nonatomic, strong) NSMutableArray*       draggableNodes;
-@property (nonatomic, weak) SKScene*                scene;
+@property (nonatomic, strong)   NSMutableArray*         draggableNodes;
+@property (nonatomic, weak)     SKScene*                scene;
 
 - (void)createRagdollAtPosition:(CGPoint)position inScene:(SKScene*)scene;
 - (BodyShapeNode*)findLimbAtPosition:(CGPoint)point;
+- (CGPoint)distanceBetweenCentreFromNode:(SKNode*)node;
 
 @end
