@@ -75,7 +75,7 @@
     torso3.name = @"torso3";
     [scene addChild:torso3];
     
-    centreNode = torso3;
+    self.centreNode = torso3;
     
     //left arm
     
@@ -326,9 +326,21 @@
 
 - (CGPoint)distanceBetweenCentreFromNode:(SKNode*)node
 {
-    return ccpSub(node.position, centreNode.position);
+    return ccpSub(node.position, _centreNode.position);
 }
 
-
+- (BOOL)isDraggableNodeInPosition:(CGPoint)offset withNode:(SKNode*)node
+{
+    
+    CGPoint targetNodePosition = ccpAdd(offset, _centreNode.position);
+    
+    CGFloat distance = ccpDistance(targetNodePosition, node.position);
+    if( distance<10.0f )
+    {
+        return YES;
+    }
+    
+    return NO;
+}
 
 @end

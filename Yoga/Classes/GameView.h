@@ -31,6 +31,7 @@ typedef enum{
 {
     CGPoint                         testPoint;
     GameState                       gameState;
+    SKLabelNode*                    poseLabel;
 }
 
 @property (nonatomic, strong) NSMutableArray*       mouseJointArray;

@@ -8,6 +8,7 @@
 
 #import "GameView.h"
 #import "Ragdoll.h"
+#import "PhysicShapeBuilder.h"
 
 #define MAX_TOUCHES             2
 
@@ -69,6 +70,11 @@
 - (void)initYogaPoses
 {
     testPoint = CGPointMake(48, 63);
+    
+    CGPoint nodePosition = ccpAdd(self.ragdoll.centreNode.position, testPoint);
+    BodyShapeNode* node= [PhysicShapeBuilder addBallShapeNodeWithRadius:10.0f withPhysicBody:NO];
+    node.position = nodePosition;
+    [self addChild:node];
 }
 
 #pragma mark - Touch Handler
@@ -127,14 +133,6 @@
             {
                 if( joint.mouseJoint )
                 {
-                    /*joint.mouseNode.position = location;
-                    
-                    CGPoint point = [self.ragdoll distanceBetweenCentreFromNode:joint.dragNode];
-                    
-                    NSLog(@"node %@ %f %f", joint.dragNode.name, point.x, point.y);
-                    
-                    */
-                    
                     joint.currentPosition = location;
                 }
                 break;
@@ -183,12 +181,13 @@
                         joint.mouseNode.position = joint.currentPosition;
                          
                          //CGPoint point = [self.ragdoll distanceBetweenCentreFromNode:joint.dragNode];
-                         
                         // NSLog(@"node %@ %f %f", joint.dragNode.name, point.x, point.y);
-                         
-                        
-                        
                         //joint.currentPosition = location;
+                        
+                        [self.ragdoll isDraggableNodeInPosition:testPoint withNode:joint.dragNode];
+                        
+                        
+                        
                     }
                     break;
                     
