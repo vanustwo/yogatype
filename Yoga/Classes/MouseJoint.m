@@ -18,12 +18,18 @@
     self.mouseNode.position = point;
     [scene addChild:self.mouseNode];
     
-    SKPhysicsBody *mouseBody = [SKPhysicsBody bodyWithCircleOfRadius:width*2];
+    SKPhysicsBody *mouseBody = [SKPhysicsBody bodyWithCircleOfRadius:width];
+    
+    //disable collision
+    mouseBody.categoryBitMask = 0;
+    mouseBody.contactTestBitMask = 0;
+    mouseBody.collisionBitMask = 0;
+    
     [mouseBody setDynamic:NO];
     [self.mouseNode setPhysicsBody:mouseBody];
     
     self.mouseJoint = [SKPhysicsJointLimit jointWithBodyA:node.physicsBody bodyB:self.mouseNode.physicsBody anchorA:node.position anchorB:point];
-    self.mouseJoint.maxLength = 5;
+    self.mouseJoint.maxLength = 15;
     [scene.physicsWorld addJoint:self.mouseJoint];
     
     self.scene = scene;

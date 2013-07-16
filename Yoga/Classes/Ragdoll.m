@@ -27,6 +27,7 @@
 
 - (void)createRagdollAtPosition:(CGPoint)position inScene:(SKScene*)scene
 {
+    self.scene = scene;
     
     //head
     
@@ -36,7 +37,7 @@
     head.physicsBody.categoryBitMask = YogaColliderTypeBody;
     head.physicsBody.collisionBitMask = YogaColliderTypeWall;
     head.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-   // head.physicsBody.dynamic = NO;
+    head.physicsBody.dynamic = NO;
     head.name = @"head";
     head.position = position;
     [scene addChild:head];
@@ -48,7 +49,7 @@
     //torso 1
     SKShapeNode* torso1 = [PhysicShapeBuilder addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
     torso1.position = CGPointMake(head.position.x, head.position.y-(headRadius/2 + torsoSize.height));
-    torso1.physicsBody.dynamic = YES;
+    torso1.physicsBody.dynamic = NO;
     torso1.name = @"torso1";
     [scene addChild:torso1];
     
@@ -239,7 +240,6 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
     [scene.physicsWorld addJoint:pinJoint];
     
     
@@ -255,7 +255,6 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -85.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 130.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
     [scene.physicsWorld addJoint:pinJoint];
     
     
@@ -264,7 +263,6 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 45.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
     [scene.physicsWorld addJoint:pinJoint];
     
     
@@ -273,7 +271,6 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 115.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
     [scene.physicsWorld addJoint:pinJoint];
     
     //right leg
@@ -281,7 +278,6 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 45.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
     [scene.physicsWorld addJoint:pinJoint];
     
     
@@ -290,7 +286,6 @@
     pinJoint.shouldEnableLimits = YES;
     pinJoint.lowerAngleLimit = -25.0f / (180.0f / M_PI);
     pinJoint.upperAngleLimit = 115.0f / (180.0f / M_PI);
-    pinJoint.frictionTorque = 0.2f;
     [scene.physicsWorld addJoint:pinJoint];
     
     //hands
@@ -306,5 +301,28 @@
     
     
 }
+
+
+- (BodyShapeNode*)findLimbAtPosition:(CGPoint)point
+{
+    
+    for( BodyShapeNode* node in self.draggableNodes )
+    {
+        
+        CGFloat distance = ccpDistance(point, node.position);
+        if( distance<node.radius )
+        {
+            NSLog(@"touch inside %@", node.name);
+            return node;
+        }
+        
+    }
+    
+    return nil;
+}
+
+
+
+
 
 @end

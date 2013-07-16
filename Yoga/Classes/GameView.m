@@ -71,49 +71,14 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        //NSLog(@"location %f %f", location.x, location.y);
-        
-        /*
-        BodyShapeNode *node = (BodyShapeNode*)[self childNodeWithName:@"head"];
+        NSLog(@"location %f %f", location.x, location.y);
 
-        BOOL touchedLimb = false;
-        
-        CGFloat distance = ccpDistance(location, node.position);
-        if( distance<node.radius )
-        {
-            NSLog(@"touch inside %@", node.name);
-            touchedLimb = true;
-        }
-        
-        
-        if( touchedLimb )
-        {
-            //find spare mouseJoint
-            
-            for( MouseJoint* joint in self.mouseJointArray )
-            {
-                
-                if( !joint.touch && !joint.mouseJoint )
-                {
-                    //found free mouseJoint
-                    [joint createMouseNodeAtPoint:location withNode:node inScene:self withTouch:touch];
-                    break;
-                }
-            }
-            
-        }*/
-        
-        
         for( MouseJoint* joint in self.mouseJointArray )
         {
             
             if( !joint.touch && !joint.mouseJoint )
             {
-                BodyShapeNode *node = (BodyShapeNode*)[self childNodeWithName:@"head"];
-                
-                
-                
-                
+                BodyShapeNode *node = [self.ragdoll findLimbAtPosition:location];
                 
                 BOOL touchedLimb = false;
                 
@@ -157,20 +122,15 @@
                 break;
                 
             }
+            
         }
-        
-        
     }
-    
-    
-    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches)
     {
-        //CGPoint location = [touch locationInNode:self];
 
         for( MouseJoint* joint in self.mouseJointArray )
         {

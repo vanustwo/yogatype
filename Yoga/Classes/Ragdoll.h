@@ -17,8 +17,9 @@
 }
 
 @property (nonatomic, strong) NSMutableArray*       draggableNodes;
+@property (nonatomic, weak) SKScene*                scene;
 
 - (void)createRagdollAtPosition:(CGPoint)position inScene:(SKScene*)scene;
-
+- (BodyShapeNode*)findLimbAtPosition:(CGPoint)point;
 
 @end
