@@ -21,7 +21,9 @@ typedef enum : uint8_t {
 
 @interface GameView : BaseView
 {
-
+    SKShapeNode*        leftHand;
+    SKShapeNode*        rightHand;
+    
 }
 
 @property (nonatomic, strong) SKPhysicsJointLimit *mouseJoint;

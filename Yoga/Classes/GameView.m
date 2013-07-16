@@ -8,8 +8,9 @@
 
 #import "GameView.h"
 
-@implementation GameView
+#define LIMBS_GRAB_RADIUS       6
 
+@implementation GameView
 
 #pragma mark Init
 
@@ -61,7 +62,7 @@
     head.physicsBody.categoryBitMask = YogaColliderTypeBody;
     head.physicsBody.collisionBitMask = YogaColliderTypeWall;
     head.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-   // head.physicsBody.dynamic = NO;
+    head.physicsBody.dynamic = NO;
     head.name = @"head";
     head.position = position;
     [self addChild:head];
@@ -126,6 +127,17 @@
     [self addChild:lowerLeftArm];
     
     
+    leftHand = [self addBallShapeNodeWithRadius:LIMBS_GRAB_RADIUS withPhysicBody:YES];
+    leftHand.name = @"leftHand";
+    leftHand.position = CGPointMake(lowerLeftArm.position.x, lowerLeftArm.position.y - armSize.height/2  );
+    leftHand.physicsBody.categoryBitMask = YogaColliderTypeArm;
+    leftHand.physicsBody.collisionBitMask = YogaColliderTypeWall;
+    leftHand.physicsBody.contactTestBitMask = YogaColliderTypeWall;
+    leftHand.physicsBody.density = 1.0f;
+    [self addChild:leftHand];
+    
+
+    
     //right arm
     SKShapeNode* upperRightArm = [self addBoxShapeNodeWithSize:armSize withPhysicBody:YES];
     upperRightArm.name = @"rightShoulder";
@@ -144,6 +156,15 @@
     lowerRightArm.physicsBody.dynamic = YES;
     lowerRightArm.position = CGPointMake(upperRightArm.position.x, upperRightArm.position.y - armSize.height  );
     [self addChild:lowerRightArm];
+    
+    rightHand = [self addBallShapeNodeWithRadius:LIMBS_GRAB_RADIUS withPhysicBody:YES];
+    rightHand.name = @"rightHand";
+    rightHand.position = CGPointMake(lowerRightArm.position.x, lowerRightArm.position.y - armSize.height/2  );
+    rightHand.physicsBody.categoryBitMask = YogaColliderTypeArm;
+    rightHand.physicsBody.collisionBitMask = YogaColliderTypeWall;
+    rightHand.physicsBody.contactTestBitMask = YogaColliderTypeWall;
+    rightHand.physicsBody.density = 1.0f;
+    [self addChild:rightHand];
     
     
     //legs
@@ -295,6 +316,15 @@
     pinJoint.frictionTorque = 0.2f;
     [self.physicsWorld addJoint:pinJoint];
     
+    //hands
+    
+    SKPhysicsJointFixed* fixedJoint = [SKPhysicsJointFixed jointWithBodyA:lowerLeftArm.physicsBody bodyB:leftHand.physicsBody anchor:leftHand.position];
+    [self.physicsWorld addJoint:fixedJoint];
+    
+    fixedJoint = [SKPhysicsJointFixed jointWithBodyA:lowerRightArm.physicsBody bodyB:rightHand.physicsBody anchor:rightHand.position];
+    [self.physicsWorld addJoint:fixedJoint];
+    
+    
     //[upperLeftLeg.physicsBody applyAngularImpulse:0.11f];
 
 
@@ -303,7 +333,6 @@
 - (SKShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics
 {
     SKShapeNode *shape = [[SKShapeNode alloc] init];
-    
     CGMutablePathRef path = CGPathCreateMutable();
 
     CGPathAddArc(path, NULL, 0,0, radius, 0, M_PI*2, YES);
@@ -362,7 +391,7 @@
         if( body && !self.mouseJoint )
         {
             
-            SKNode *node = body.node;
+            SKNode *node = [ self childNodeWithName:@"head"];//body.node;
             
             NSLog(@"touch body %@", node.name);
             
