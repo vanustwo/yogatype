@@ -9,6 +9,7 @@
 #import "GameView.h"
 #import "Ragdoll.h"
 #import "PhysicShapeBuilder.h"
+#import "PosePoint.h"
 
 #define MAX_TOUCHES             2
 
@@ -71,10 +72,25 @@
 {
     testPoint = CGPointMake(48, 63);
     
-    CGPoint nodePosition = ccpAdd(self.ragdoll.centreNode.position, testPoint);
-    BodyShapeNode* node= [PhysicShapeBuilder addBallShapeNodeWithRadius:10.0f withPhysicBody:NO];
+    if( !_posePointArray )
+    {
+        _posePointArray = [NSMutableArray arrayWithCapacity:2];
+    }
+    
+    PosePoint* posePoint = [[PosePoint alloc] initWithPoint:testPoint inScene:self toNode:(ShapeNode*)[self childNodeWithName:@"rightHand"]];
+    posePoint.ragdollCentre = _ragdoll.centreNode;
+    [_posePointArray addObject:posePoint];
+    
+    CGPoint nodePosition = ccpAdd(posePoint.ragdollCentre.position, posePoint.offsetPoint);
+    ShapeNode* node= [PhysicShapeBuilder addBallShapeNodeWithRadius:10.0f withPhysicBody:NO];
     node.position = nodePosition;
+    posePoint.shapeNode = node;
     [self addChild:node];
+    
+    
+    
+    
+    
 }
 
 #pragma mark - Touch Handler
@@ -90,7 +106,7 @@
         {
             if( !joint.touch && !joint.mouseJoint )
             {
-                BodyShapeNode *node = [self.ragdoll findLimbAtPosition:location];
+                ShapeNode *node = [self.ragdoll findLimbAtPosition:location];
                 
                 BOOL touchedLimb = false;
                 
@@ -184,8 +200,8 @@
                         // NSLog(@"node %@ %f %f", joint.dragNode.name, point.x, point.y);
                         //joint.currentPosition = location;
                         
-                        [self.ragdoll isDraggableNodeInPosition:testPoint withNode:joint.dragNode];
-                        
+                        //[self.ragdoll isDraggableNodeInPosition:testPoint withNode:joint.dragNode];
+
                         
                         
                     }
@@ -206,7 +222,6 @@
     }
     
     
-    
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -219,5 +234,18 @@
    // NSLog(@"didEndContact");
 }
 
+- (BOOL)isLimbInPosePoint:(PosePoint*)posePoint
+{
+    CGPoint targetNodePosition = ccpAdd(posePoint.offsetPoint, posePoint.ragdollCentre.position);
+    
+    CGFloat distance = ccpDistance(targetNodePosition, posePoint.limbNode.position);
+    if( distance<10.0f )
+    {
+        return YES;
+    }
+    
+    
+    return NO;
+}
 
 @end

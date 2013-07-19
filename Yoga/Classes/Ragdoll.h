@@ -8,20 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
-#import "BodyShapeNode.h"
+#import "ShapeNode.h"
 
 @interface Ragdoll : NSObject
 {
-    BodyShapeNode*        leftHand;
-    BodyShapeNode*        rightHand;
+    ShapeNode*        leftHand;
+    ShapeNode*        rightHand;
 }
 
 @property (nonatomic, strong)   NSMutableArray*         draggableNodes;
 @property (nonatomic, weak)     SKScene*                scene;
-@property (nonatomic, weak)     BodyShapeNode*          centreNode;
+@property (nonatomic, weak)     ShapeNode*          centreNode;
 
 - (void)createRagdollAtPosition:(CGPoint)position inScene:(SKScene*)scene;
-- (BodyShapeNode*)findLimbAtPosition:(CGPoint)point;
+- (ShapeNode*)findLimbAtPosition:(CGPoint)point;
 - (CGPoint)distanceBetweenCentreFromNode:(SKNode*)node;
 - (BOOL)isDraggableNodeInPosition:(CGPoint)offset withNode:(SKNode*)node;
 

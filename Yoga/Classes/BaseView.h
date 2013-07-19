@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "CGPointExtension.h"
-#import "BodyShapeNode.h"
+#import "ShapeNode.h"
 #import "MouseJoint.h"
 
 @interface BaseView : SKScene <SKPhysicsContactDelegate>

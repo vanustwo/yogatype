@@ -22,7 +22,6 @@ typedef enum : uint8_t {
 typedef enum{
     GameState_Idle,
     GameState_Start,
-    
     GameState_End,
 }GameState;
 
@@ -35,6 +34,8 @@ typedef enum{
 }
 
 @property (nonatomic, strong) NSMutableArray*       mouseJointArray;
+@property (nonatomic, strong) NSMutableArray*       posePointArray;
+
 @property (nonatomic, strong) Ragdoll*              ragdoll;
 
 @end

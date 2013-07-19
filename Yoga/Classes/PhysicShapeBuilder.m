@@ -11,9 +11,9 @@
 
 @implementation PhysicShapeBuilder
 
-+ (BodyShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics
++ (ShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics
 {
-    BodyShapeNode *shape = [[BodyShapeNode alloc] init];
+    ShapeNode *shape = [[ShapeNode alloc] init];
     CGMutablePathRef path = CGPathCreateMutable();
     
     CGPathAddArc(path, NULL, 0,0, radius, 0, M_PI*2, YES);
@@ -35,9 +35,9 @@
     return shape;
 }
 
-+ (BodyShapeNode*)addBoxShapeNodeWithSize:(CGSize)size withPhysicBody:(BOOL)usePhysics
++ (ShapeNode*)addBoxShapeNodeWithSize:(CGSize)size withPhysicBody:(BOOL)usePhysics
 {
-    BodyShapeNode *shape = [[BodyShapeNode alloc] init];
+    ShapeNode *shape = [[ShapeNode alloc] init];
     
     CGMutablePathRef path = CGPathCreateMutable();
     

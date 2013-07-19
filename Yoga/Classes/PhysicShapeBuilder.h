@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
-#import "BodyShapeNode.h"
+#import "ShapeNode.h"
 
 @interface PhysicShapeBuilder : NSObject
 {
@@ -17,7 +17,7 @@
 }
 
 
-+ (BodyShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics;
-+ (BodyShapeNode*)addBoxShapeNodeWithSize:(CGSize)size withPhysicBody:(BOOL)usePhysics;
++ (ShapeNode*)addBallShapeNodeWithRadius:(CGFloat)radius withPhysicBody:(BOOL)usePhysics;
++ (ShapeNode*)addBoxShapeNodeWithSize:(CGSize)size withPhysicBody:(BOOL)usePhysics;
 
 @end

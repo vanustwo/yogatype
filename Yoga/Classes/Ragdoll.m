@@ -66,7 +66,7 @@
     
     
     //torso 3
-    BodyShapeNode* torso3 = [PhysicShapeBuilder addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
+    ShapeNode* torso3 = [PhysicShapeBuilder addBoxShapeNodeWithSize:torsoSize withPhysicBody:YES];
     torso3.physicsBody.categoryBitMask = YogaColliderTypeBody;
     torso3.physicsBody.collisionBitMask = YogaColliderTypeWall;
     torso3.physicsBody.contactTestBitMask = YogaColliderTypeWall;
@@ -306,10 +306,10 @@
 }
 
 
-- (BodyShapeNode*)findLimbAtPosition:(CGPoint)point
+- (ShapeNode*)findLimbAtPosition:(CGPoint)point
 {
     
-    for( BodyShapeNode* node in self.draggableNodes )
+    for( ShapeNode* node in self.draggableNodes )
     {
         
         CGFloat distance = ccpDistance(point, node.position);

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 ustwo. All rights reserved.
 //
 
-#import "BodyShapeNode.h"
+#import "ShapeNode.h"
 
-@implementation BodyShapeNode
+@implementation ShapeNode
 
 @end

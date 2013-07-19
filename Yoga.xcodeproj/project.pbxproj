@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210A8E601795A9EC00F5F481 /* PosePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 210A8E5F1795A9EC00F5F481 /* PosePoint.m */; };
+		210A8E611795A9EC00F5F481 /* PosePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 210A8E5F1795A9EC00F5F481 /* PosePoint.m */; };
 		214E814C178FF34400C7054E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814B178FF34400C7054E /* Foundation.framework */; };
 		214E814E178FF34400C7054E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814D178FF34400C7054E /* CoreGraphics.framework */; };
 		214E8150178FF34400C7054E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814F178FF34400C7054E /* UIKit.framework */; };
@@ -32,8 +34,8 @@
 		218B464E179007E70035C8C1 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 218B464C179007E70035C8C1 /* sprites.atlas */; };
 		21E01B2C17954FA0001F9200 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2B17954FA0001F9200 /* CGPointExtension.m */; };
 		21E01B2D17954FA0001F9200 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2B17954FA0001F9200 /* CGPointExtension.m */; };
-		21E01B30179551BB001F9200 /* BodyShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2F179551BB001F9200 /* BodyShapeNode.m */; };
-		21E01B31179551BB001F9200 /* BodyShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2F179551BB001F9200 /* BodyShapeNode.m */; };
+		21E01B30179551BB001F9200 /* ShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2F179551BB001F9200 /* ShapeNode.m */; };
+		21E01B31179551BB001F9200 /* ShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B2F179551BB001F9200 /* ShapeNode.m */; };
 		21E01B3417955594001F9200 /* MouseJoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3317955594001F9200 /* MouseJoint.m */; };
 		21E01B3517955594001F9200 /* MouseJoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3317955594001F9200 /* MouseJoint.m */; };
 		21E01B3817957685001F9200 /* Ragdoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3717957685001F9200 /* Ragdoll.m */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210A8E5E1795A9EC00F5F481 /* PosePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosePoint.h; sourceTree = "<group>"; };
+		210A8E5F1795A9EC00F5F481 /* PosePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PosePoint.m; sourceTree = "<group>"; };
 		214E8148178FF34400C7054E /* Yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214E814B178FF34400C7054E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		214E814D178FF34400C7054E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,8 +88,8 @@
 		218B464C179007E70035C8C1 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		21E01B2A17954FA0001F9200 /* CGPointExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointExtension.h; sourceTree = "<group>"; };
 		21E01B2B17954FA0001F9200 /* CGPointExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPointExtension.m; sourceTree = "<group>"; };
-		21E01B2E179551BB001F9200 /* BodyShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyShapeNode.h; sourceTree = "<group>"; };
-		21E01B2F179551BB001F9200 /* BodyShapeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyShapeNode.m; sourceTree = "<group>"; };
+		21E01B2E179551BB001F9200 /* ShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeNode.h; sourceTree = "<group>"; };
+		21E01B2F179551BB001F9200 /* ShapeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeNode.m; sourceTree = "<group>"; };
 		21E01B3217955594001F9200 /* MouseJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseJoint.h; sourceTree = "<group>"; };
 		21E01B3317955594001F9200 /* MouseJoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouseJoint.m; sourceTree = "<group>"; };
 		21E01B3617957685001F9200 /* Ragdoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ragdoll.h; sourceTree = "<group>"; };
@@ -208,14 +212,16 @@
 				218B43E6178FFB9D0035C8C1 /* GameView.h */,
 				218B43E7178FFB9D0035C8C1 /* GameView.m */,
 				218B4641178FFDFD0035C8C1 /* GameMacros.h */,
-				21E01B2E179551BB001F9200 /* BodyShapeNode.h */,
-				21E01B2F179551BB001F9200 /* BodyShapeNode.m */,
+				21E01B2E179551BB001F9200 /* ShapeNode.h */,
+				21E01B2F179551BB001F9200 /* ShapeNode.m */,
 				21E01B3217955594001F9200 /* MouseJoint.h */,
 				21E01B3317955594001F9200 /* MouseJoint.m */,
 				21E01B3617957685001F9200 /* Ragdoll.h */,
 				21E01B3717957685001F9200 /* Ragdoll.m */,
 				21E01B3A17957832001F9200 /* PhysicShapeBuilder.h */,
 				21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */,
+				210A8E5E1795A9EC00F5F481 /* PosePoint.h */,
+				210A8E5F1795A9EC00F5F481 /* PosePoint.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -345,7 +351,8 @@
 				21E01B3417955594001F9200 /* MouseJoint.m in Sources */,
 				214E8167178FF34400C7054E /* ViewController.m in Sources */,
 				21E01B3C17957832001F9200 /* PhysicShapeBuilder.m in Sources */,
-				21E01B30179551BB001F9200 /* BodyShapeNode.m in Sources */,
+				21E01B30179551BB001F9200 /* ShapeNode.m in Sources */,
+				210A8E601795A9EC00F5F481 /* PosePoint.m in Sources */,
 				214E815E178FF34400C7054E /* AppDelegate.m in Sources */,
 				21E01B3817957685001F9200 /* Ragdoll.m in Sources */,
 				214E815A178FF34400C7054E /* main.m in Sources */,
@@ -362,8 +369,9 @@
 				218B43E9178FFB9D0035C8C1 /* GameView.m in Sources */,
 				214E8181178FF34400C7054E /* YogaTests.m in Sources */,
 				21E01B2D17954FA0001F9200 /* CGPointExtension.m in Sources */,
-				21E01B31179551BB001F9200 /* BodyShapeNode.m in Sources */,
+				21E01B31179551BB001F9200 /* ShapeNode.m in Sources */,
 				218B46491790011D0035C8C1 /* BaseView.m in Sources */,
+				210A8E611795A9EC00F5F481 /* PosePoint.m in Sources */,
 				21E01B3D17957832001F9200 /* PhysicShapeBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

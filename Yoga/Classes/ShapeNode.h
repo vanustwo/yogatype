@@ -8,8 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface BodyShapeNode : SKShapeNode
-
+@interface ShapeNode : SKShapeNode
+{
+    
+}
 
 @property (SK_NONATOMIC_IOSONLY) CGFloat    radius;
 
