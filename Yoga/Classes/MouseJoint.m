@@ -29,7 +29,7 @@
     [self.mouseNode setPhysicsBody:mouseBody];
     
     self.mouseJoint = [SKPhysicsJointLimit jointWithBodyA:node.physicsBody bodyB:self.mouseNode.physicsBody anchorA:node.position anchorB:point];
-    self.mouseJoint.maxLength = 15;
+    self.mouseJoint.maxLength = 35;
     [scene.physicsWorld addJoint:self.mouseJoint];
     
     self.dragNode = node;

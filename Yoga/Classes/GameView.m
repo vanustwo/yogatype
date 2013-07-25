@@ -88,9 +88,6 @@
     [self addChild:node];
     
     
-    
-    
-    
 }
 
 #pragma mark - Touch Handler
@@ -202,8 +199,18 @@
                         
                         //[self.ragdoll isDraggableNodeInPosition:testPoint withNode:joint.dragNode];
 
-                        
-                        
+                        for (PosePoint* posePoint in _posePointArray)
+                        {
+                            if([self isLimbInPosePoint:posePoint])
+                            {
+                                NSLog(@"posePoint %@ in position", posePoint.limbNode.name);
+                                
+                               
+                                [self snapLimbToPosePoint:posePoint];
+                            }
+                            
+                        }
+
                     }
                     break;
                     
@@ -234,6 +241,8 @@
    // NSLog(@"didEndContact");
 }
 
+#pragma mark - Posing
+
 - (BOOL)isLimbInPosePoint:(PosePoint*)posePoint
 {
     CGPoint targetNodePosition = ccpAdd(posePoint.offsetPoint, posePoint.ragdollCentre.position);
@@ -247,5 +256,20 @@
     
     return NO;
 }
+
+- (void)snapLimbToPosePoint:(PosePoint *)posePoint
+{
+    if(!posePoint.snapLimbInPosePoint)
+    {
+        NSLog( @"snapLimbToPosePoint %@", posePoint.limbNode.name );
+        CGPoint targetNodePosition = ccpAdd(posePoint.offsetPoint, posePoint.ragdollCentre.position);
+        posePoint.snapLimbInPosePoint = YES;
+        posePoint.limbNode.position = targetNodePosition;
+        
+        
+    }
+}
+
+
 
 @end

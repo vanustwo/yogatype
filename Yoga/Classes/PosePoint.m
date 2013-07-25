@@ -27,7 +27,7 @@
     _offsetPoint = point;
     scene = _scene;
     _limbNode = node;
-    
+    _snapLimbInPosePoint = NO;
     
     if(!_shapeNode)
     {
