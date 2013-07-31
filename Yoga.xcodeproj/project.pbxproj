@@ -42,6 +42,9 @@
 		21E01B3917957685001F9200 /* Ragdoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3717957685001F9200 /* Ragdoll.m */; };
 		21E01B3C17957832001F9200 /* PhysicShapeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */; };
 		21E01B3D17957832001F9200 /* PhysicShapeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */; };
+		21F5571E17A922F1006AC8DD /* blood.sks in Resources */ = {isa = PBXBuildFile; fileRef = 21F5571C17A922F1006AC8DD /* blood.sks */; };
+		21F5571F17A922F1006AC8DD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F5571D17A922F1006AC8DD /* spark.png */; };
+		21F5572217A930DA006AC8DD /* smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 21F5572117A930D6006AC8DD /* smoke.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,9 @@
 		21E01B3717957685001F9200 /* Ragdoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ragdoll.m; sourceTree = "<group>"; };
 		21E01B3A17957832001F9200 /* PhysicShapeBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicShapeBuilder.h; sourceTree = "<group>"; };
 		21E01B3B17957832001F9200 /* PhysicShapeBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhysicShapeBuilder.m; sourceTree = "<group>"; };
+		21F5571C17A922F1006AC8DD /* blood.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = blood.sks; sourceTree = "<group>"; };
+		21F5571D17A922F1006AC8DD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		21F5572117A930D6006AC8DD /* smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = smoke.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +235,7 @@
 		218B464A179007E70035C8C1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				21F5571917A92269006AC8DD /* Particles */,
 				218B464B179007E70035C8C1 /* Textures */,
 			);
 			path = Assets;
@@ -240,6 +247,16 @@
 				218B464C179007E70035C8C1 /* sprites.atlas */,
 			);
 			path = Textures;
+			sourceTree = "<group>";
+		};
+		21F5571917A92269006AC8DD /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				21F5572117A930D6006AC8DD /* smoke.sks */,
+				21F5571C17A922F1006AC8DD /* blood.sks */,
+				21F5571D17A922F1006AC8DD /* spark.png */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,9 +340,12 @@
 			files = (
 				218B464D179007E70035C8C1 /* sprites.atlas in Resources */,
 				214E816E178FF34400C7054E /* Images.xcassets in Resources */,
+				21F5571E17A922F1006AC8DD /* blood.sks in Resources */,
+				21F5571F17A922F1006AC8DD /* spark.png in Resources */,
 				214E8164178FF34400C7054E /* Main_iPad.storyboard in Resources */,
 				214E8161178FF34400C7054E /* Main_iPhone.storyboard in Resources */,
 				214E8158178FF34400C7054E /* InfoPlist.strings in Resources */,
+				21F5572217A930DA006AC8DD /* smoke.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,7 @@ typedef enum : uint8_t {
 typedef enum{
     GameState_Idle,
     GameState_Start,
+    GameState_PoseComplete,
     GameState_End,
 }GameState;
 
@@ -31,11 +32,14 @@ typedef enum{
     CGPoint                         testPoint;
     GameState                       gameState;
     SKLabelNode*                    poseLabel;
+    SKEmitterNode*                  emitterNode;
+    CGFloat                         m_timer;
+    
+    
 }
 
 @property (nonatomic, strong) NSMutableArray*       mouseJointArray;
 @property (nonatomic, strong) NSMutableArray*       posePointArray;
-
 @property (nonatomic, strong) Ragdoll*              ragdoll;
 
 @end

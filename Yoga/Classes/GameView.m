@@ -19,17 +19,12 @@
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Yoga!";
-        myLabel.fontSize = 20;
-        myLabel.position = [self screenCenterPoint];
-        [self addChild:myLabel];
-        
+        [self initLabels];
         [self initPhysicsWorld];
         [self initMouseJoints];
         
@@ -43,6 +38,21 @@
     return self;
 }
 
+- (void)initLabels
+{
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    label.text = @"Strike a pose!";
+    label.fontSize = 20;
+    label.position = CGPointMake([self NToVP_X:0.5f], [self NToVP_Y:0.95f]);
+    [self addChild:label];
+    
+    poseLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    poseLabel.text = @"Well Done";
+    poseLabel.fontSize = 20;
+    poseLabel.position = CGPointMake([self NToVP_X:0.5f], [self NToVP_Y:0.75f]);
+    [self addChild:poseLabel];
+
+}
 
 - (void)initPhysicsWorld
 {
@@ -52,13 +62,21 @@
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     //self.physicsBody.categoryBitMask = YogaColliderTypeWall;
     self.physicsBody.dynamic = NO;
+
+    /*emitterNode = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"smoke" ofType:@"sks"]];
+    emitterNode.position = [self screenCenterPoint];
+    [emitterNode resetSimulation];
+    [self addChild:emitterNode];*/
+    
+    m_timer = 0;
+    
 }
 
 - (void)initMouseJoints
 {
-    
-    self.mouseJointArray = [NSMutableArray arrayWithCapacity:MAX_TOUCHES];
 
+    self.mouseJointArray = [NSMutableArray arrayWithCapacity:MAX_TOUCHES];
+    
     //create 2 empty mouse joint
     for( int i=0;i<MAX_TOUCHES;i++ )
     {
@@ -86,7 +104,16 @@
     node.position = nodePosition;
     posePoint.shapeNode = node;
     [self addChild:node];
+
+    posePoint = [[PosePoint alloc] initWithPoint:CGPointMake(-48, 63) inScene:self toNode:(ShapeNode*)[self childNodeWithName:@"leftHand"]];
+    posePoint.ragdollCentre = _ragdoll.centreNode;
+    [_posePointArray addObject:posePoint];
     
+    nodePosition = ccpAdd(posePoint.ragdollCentre.position, posePoint.offsetPoint);
+    node= [PhysicShapeBuilder addBallShapeNodeWithRadius:10.0f withPhysicBody:NO];
+    node.position = nodePosition;
+    posePoint.shapeNode = node;
+    [self addChild:node];
     
 }
 
@@ -121,9 +148,6 @@
                     joint.currentPosition = location;
                     break;
                 }
-                
-                
-                
             
             }
         }
@@ -141,15 +165,13 @@
         
         for( MouseJoint* joint in self.mouseJointArray )
         {
-            
             if( joint.touch && joint.touch==touch  )
             {
                 if( joint.mouseJoint )
                 {
                     joint.currentPosition = location;
                 }
-                break;
-                
+               
             }
             
         }
@@ -160,7 +182,6 @@
 {
     for (UITouch *touch in touches)
     {
-
         for( MouseJoint* joint in self.mouseJointArray )
         {
             if( joint.touch && joint.touch==touch  )
@@ -183,52 +204,76 @@
     switch (gameState) {
         case GameState_Start:
         {
-         
             for( MouseJoint* joint in self.mouseJointArray )
             {
-                
-                if( joint.touch )
+                if( joint.touch && joint.mouseJoint )
                 {
-                    if( joint.mouseJoint )
+                    
+                   // CGPoint point = [self.ragdoll distanceBetweenCentreFromNode:joint.dragNode];
+                   //  NSLog(@"node %@ %f %f", joint.dragNode.name, point.x, point.y);
+                    //joint.currentPosition = location;
+                    //[self.ragdoll isDraggableNodeInPosition:testPoint withNode:joint.dragNode];
+                    
+                    for( PosePoint* posePoint in _posePointArray )
                     {
-                        joint.mouseNode.position = joint.currentPosition;
-                         
-                         //CGPoint point = [self.ragdoll distanceBetweenCentreFromNode:joint.dragNode];
-                        // NSLog(@"node %@ %f %f", joint.dragNode.name, point.x, point.y);
-                        //joint.currentPosition = location;
-                        
-                        //[self.ragdoll isDraggableNodeInPosition:testPoint withNode:joint.dragNode];
-
-                        for (PosePoint* posePoint in _posePointArray)
+                        if( !posePoint.snapLimbInPosePoint )
                         {
                             if([self isLimbInPosePoint:posePoint])
                             {
                                 NSLog(@"posePoint %@ in position", posePoint.limbNode.name);
-                                
-                               
+                                [joint destroyMouseJoint];
                                 [self snapLimbToPosePoint:posePoint];
+                                break;
                             }
-                            
+                            else
+                            {
+                                joint.mouseNode.position = joint.currentPosition;
+                            }
                         }
-
+                        
                     }
-                    break;
-                    
                 }
                 
             }
             
-            
-            
+            if( [self hasCompletedPose] )
+            {
+                gameState = GameState_PoseComplete;
+            }
             
         }
             break;
+        case GameState_PoseComplete:
+        {
             
+        }break;
         default:
             break;
     }
     
     
+}
+
+#pragma mark - Physics
+
+- (void)didSimulatePhysics
+{
+    
+    switch (gameState) {
+        case GameState_Start:
+        {
+            for( PosePoint* posePoint in _posePointArray )
+            {
+                if( posePoint.snapLimbInPosePoint )
+                {
+                   // NSLog(@"change to non dynamic body");
+                  //  posePoint.limbNode.physicsBody.dynamic = NO;
+                }
+                
+            }
+        }break;
+        default:break;
+    }
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -266,10 +311,27 @@
         posePoint.snapLimbInPosePoint = YES;
         posePoint.limbNode.position = targetNodePosition;
         
+        //snap the limb and reset bit mask
+        posePoint.limbNode.physicsBody.dynamic = NO;
+        posePoint.limbNode.physicsBody.categoryBitMask = 0;
+        posePoint.limbNode.physicsBody.collisionBitMask = 0;
+        posePoint.limbNode.physicsBody.contactTestBitMask = 0;
         
     }
 }
 
+- (bool)hasCompletedPose
+{
+    for( PosePoint* posePoint in _posePointArray )
+    {
+        if( !posePoint.snapLimbInPosePoint )
+        {
+            return false;
+        }
+    }
+    
+    return true;
+}
 
 
 @end

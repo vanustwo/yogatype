@@ -98,7 +98,6 @@
     lowerLeftArm.physicsBody.categoryBitMask = YogaColliderTypeArm;
     lowerLeftArm.physicsBody.collisionBitMask = YogaColliderTypeWall;
     lowerLeftArm.physicsBody.contactTestBitMask = YogaColliderTypeWall;
-    lowerLeftArm.physicsBody.dynamic = YES;
     lowerLeftArm.position = CGPointMake(upperLeftArm.position.x, upperLeftArm.position.y - armSize.height  );
     [scene addChild:lowerLeftArm];
     
