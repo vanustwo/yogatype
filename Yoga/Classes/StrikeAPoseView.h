@@ -27,13 +27,13 @@ typedef enum{
 }GameState;
 
 
-@interface GameView : BaseView
+@interface StrikeAPoseView : BaseView
 {
     CGPoint                         testPoint;
     GameState                       gameState;
     SKLabelNode*                    poseLabel;
     SKEmitterNode*                  emitterNode;
-    CGFloat                         m_timer;
+    CFTimeInterval                  m_timer;
     
     
 }

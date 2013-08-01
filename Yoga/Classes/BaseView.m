@@ -12,6 +12,14 @@
 
 @implementation BaseView
 
+-(id)initWithSize:(CGSize)size {
+    if (self = [super initWithSize:size]) {
+
+        
+    }
+    return self;
+}
+
 - (int)NToVP_X:(float)dist
 {
     return (int)(dist * self.frame.size.width);
@@ -41,6 +49,8 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     self.timeSinceLast = currentTime - self.lastUpdateTimeInterval;
+    self.timeSinceLast = MIN(self.timeSinceLast, kMinTimeInterval);
+    
     self.lastUpdateTimeInterval = currentTime;
     
     

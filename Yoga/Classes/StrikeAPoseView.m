@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 ustwo. All rights reserved.
 //
 
-#import "GameView.h"
+#import "StrikeAPoseView.h"
 #import "Ragdoll.h"
 #import "PhysicShapeBuilder.h"
 #import "PosePoint.h"
 
 #define MAX_TOUCHES             2
 
-@implementation GameView
+@implementation StrikeAPoseView
 
 #pragma mark Init
 
@@ -32,6 +32,7 @@
         [self.ragdoll createRagdollAtPosition:[self screenCenterPoint] inScene:self];
         
         [self initYogaPoses];
+        [self resetGame];
         
         gameState = GameState_Start;
     }
@@ -51,6 +52,7 @@
     poseLabel.fontSize = 20;
     poseLabel.position = CGPointMake([self NToVP_X:0.5f], [self NToVP_Y:0.75f]);
     [self addChild:poseLabel];
+    
 
 }
 
@@ -115,6 +117,11 @@
     posePoint.shapeNode = node;
     [self addChild:node];
     
+}
+
+- (void)resetGame
+{
+    poseLabel.hidden = YES;
 }
 
 #pragma mark - Touch Handler
@@ -239,12 +246,22 @@
             if( [self hasCompletedPose] )
             {
                 gameState = GameState_PoseComplete;
+                m_timer = 0;
+                poseLabel.hidden = NO;
+                
             }
+
             
         }
             break;
         case GameState_PoseComplete:
         {
+            m_timer+=self.timeSinceLast;
+            
+            if( m_timer>=3.0f )
+            {
+                //NSLog(@"Delay finished");
+            }
             
         }break;
         default:

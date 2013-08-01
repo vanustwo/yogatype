@@ -8,7 +8,7 @@
 
 #import "Ragdoll.h"
 #import "PhysicShapeBuilder.h"
-#import "GameView.h"
+#import "StrikeAPoseView.h"
 #import "GameMacros.h"
 
 @implementation Ragdoll

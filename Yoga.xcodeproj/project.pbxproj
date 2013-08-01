@@ -26,8 +26,8 @@
 		214E8177178FF34400C7054E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214E814F178FF34400C7054E /* UIKit.framework */; };
 		214E817F178FF34400C7054E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 214E817D178FF34400C7054E /* InfoPlist.strings */; };
 		214E8181178FF34400C7054E /* YogaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 214E8180178FF34400C7054E /* YogaTests.m */; };
-		218B43E8178FFB9D0035C8C1 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B43E7178FFB9D0035C8C1 /* GameView.m */; };
-		218B43E9178FFB9D0035C8C1 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B43E7178FFB9D0035C8C1 /* GameView.m */; };
+		218B43E8178FFB9D0035C8C1 /* StrikeAPoseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B43E7178FFB9D0035C8C1 /* StrikeAPoseView.m */; };
+		218B43E9178FFB9D0035C8C1 /* StrikeAPoseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B43E7178FFB9D0035C8C1 /* StrikeAPoseView.m */; };
 		218B46481790011D0035C8C1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B46471790011D0035C8C1 /* BaseView.m */; };
 		218B46491790011D0035C8C1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 218B46471790011D0035C8C1 /* BaseView.m */; };
 		218B464D179007E70035C8C1 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 218B464C179007E70035C8C1 /* sprites.atlas */; };
@@ -83,8 +83,8 @@
 		214E817C178FF34400C7054E /* YogaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YogaTests-Info.plist"; sourceTree = "<group>"; };
 		214E817E178FF34400C7054E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		214E8180178FF34400C7054E /* YogaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YogaTests.m; sourceTree = "<group>"; };
-		218B43E6178FFB9D0035C8C1 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
-		218B43E7178FFB9D0035C8C1 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		218B43E6178FFB9D0035C8C1 /* StrikeAPoseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrikeAPoseView.h; sourceTree = "<group>"; };
+		218B43E7178FFB9D0035C8C1 /* StrikeAPoseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrikeAPoseView.m; sourceTree = "<group>"; };
 		218B4641178FFDFD0035C8C1 /* GameMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMacros.h; sourceTree = "<group>"; };
 		218B46461790011D0035C8C1 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		218B46471790011D0035C8C1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
@@ -215,8 +215,8 @@
 				21E01B2B17954FA0001F9200 /* CGPointExtension.m */,
 				218B46461790011D0035C8C1 /* BaseView.h */,
 				218B46471790011D0035C8C1 /* BaseView.m */,
-				218B43E6178FFB9D0035C8C1 /* GameView.h */,
-				218B43E7178FFB9D0035C8C1 /* GameView.m */,
+				218B43E6178FFB9D0035C8C1 /* StrikeAPoseView.h */,
+				218B43E7178FFB9D0035C8C1 /* StrikeAPoseView.m */,
 				218B4641178FFDFD0035C8C1 /* GameMacros.h */,
 				21E01B2E179551BB001F9200 /* ShapeNode.h */,
 				21E01B2F179551BB001F9200 /* ShapeNode.m */,
@@ -366,7 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				214E816A178FF34400C7054E /* MyScene.m in Sources */,
-				218B43E8178FFB9D0035C8C1 /* GameView.m in Sources */,
+				218B43E8178FFB9D0035C8C1 /* StrikeAPoseView.m in Sources */,
 				218B46481790011D0035C8C1 /* BaseView.m in Sources */,
 				21E01B3417955594001F9200 /* MouseJoint.m in Sources */,
 				214E8167178FF34400C7054E /* ViewController.m in Sources */,
@@ -386,7 +386,7 @@
 			files = (
 				21E01B3917957685001F9200 /* Ragdoll.m in Sources */,
 				21E01B3517955594001F9200 /* MouseJoint.m in Sources */,
-				218B43E9178FFB9D0035C8C1 /* GameView.m in Sources */,
+				218B43E9178FFB9D0035C8C1 /* StrikeAPoseView.m in Sources */,
 				214E8181178FF34400C7054E /* YogaTests.m in Sources */,
 				21E01B2D17954FA0001F9200 /* CGPointExtension.m in Sources */,
 				21E01B31179551BB001F9200 /* ShapeNode.m in Sources */,
